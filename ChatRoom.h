@@ -1,6 +1,5 @@
 #ifndef CHATROOM_H
 #define CHATROOM_H
-#include "Users.h"
 #include <string>
 #include <vector>
 using namespace std;
@@ -14,9 +13,12 @@ protected:
 		Users* sender;
 	};
 	vector<Users*> users;
-	vector<chatMessage*> chatHistory;
+	vector<chatMessage> chatHistory;
 
 public:
+	ChatRoom();
+	virtual ~ChatRoom();
+
 	virtual void registerUser(Users* User) = 0;
 
 	virtual void sendMessage(string message, Users* fromUser) = 0;
