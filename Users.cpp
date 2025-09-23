@@ -10,6 +10,10 @@ Users::Users(string name){
 }
 
 Users::~Users() {
+    for(Command* command : commandQueue){
+        delete command; //free the memory
+    }
+    commandQueue.clear(); // Clear the vector
 }
 
 string Users::getName() const {
