@@ -9,6 +9,7 @@ class ChatRoom {
 private:
 	// Im gonna have a vector of users in the chat room
 	// Hear me out what about a vector of Messages for the history (we make a new class called Message) or just a vecotr of strings
+	// Fuck that a vector of strings is ez
 	vector<Users*> users;
 	vector<string> chatHistory;
 

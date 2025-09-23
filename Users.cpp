@@ -5,7 +5,6 @@ using namespace std;
 
 Users::Users(string name){
     this->name = name;
-    commandQueue = NULL;
 }
 
 string Users::getName() const {
@@ -20,4 +19,14 @@ void Users::send(string message, ChatRoom* room){
 }
 void Users::receive(string message, Users* fromUser, ChatRoom* room){
     cout << "[" << room << "] " << fromUser->getName() << ": " << message << endl;
+}
+void Users::addCommand(Command* command){
+    commandQueue.push_back(command);
+}
+void Users::executeAll(){
+    for(Command* command : commandQueue){
+        command->execute();
+        delete command; //free the memory
+    }
+    commandQueue.clear(); // Clear the vector
 }

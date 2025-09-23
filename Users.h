@@ -11,7 +11,7 @@ class Users {// Should have a setMediator function?
 protected:
 	vector<ChatRoom*> chatRooms; // changed to be a vecctor
 	string name;
-	Command* commandQueue;
+	vector<Command*> commandQueue;
 
 public:
 	Users(string name);
@@ -19,7 +19,7 @@ public:
 
     void receive(string message, Users* fromUser, ChatRoom* room);
 
-	void addCommand(Command command);
+	void addCommand(Command* command);
 
 	void executeAll();
 	void setChatRooms(ChatRoom* rooms);
