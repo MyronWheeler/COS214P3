@@ -7,13 +7,13 @@ class Users;
 class ChatRoom {
 
 protected:
-	struct chatMessage {
+	struct ChatMessage {
 		long timestamp;
 		string message;
 		Users* sender;
 	};
 	vector<Users*> users;
-	vector<chatMessage> chatHistory;
+	vector<ChatMessage> chatHistory;
 
 public:
 	ChatRoom();

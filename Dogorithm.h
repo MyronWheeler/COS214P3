@@ -1,6 +1,10 @@
 #ifndef DOGORITHM_H
 #define DOGORITHM_H
 #include "ChatRoom.h"
+#include <iostream>
+#include <string>
+using namespace std;
+#include "Users.h"
 class Dogorithm : public ChatRoom {
 public:
     Dogorithm();

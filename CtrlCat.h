@@ -1,6 +1,7 @@
 #ifndef CTRLCAT_H
 #define CTRLCAT_H
 #include "ChatRoom.h"
+#include "Users.h"
 
 class CtrlCat : public ChatRoom {
 public:

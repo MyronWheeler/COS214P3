@@ -12,6 +12,7 @@ void CtrlCat::registerUser(Users* User){
 void CtrlCat::sendMessage(std::string message, Users* fromUser){
     // I'm gonna add a check to see if the user is in the chat room
     // If they arent, we dont send the message
+    //TODO: why add the check here but not in Dogorithm? I think this is unnecessary for a prac, no one is trying to hack it
     bool found = false;
     for (Users* user : users){
         if (user->getName() == fromUser->getName()){
@@ -33,6 +34,7 @@ void CtrlCat::sendMessage(std::string message, Users* fromUser){
 }
 void CtrlCat::saveMessage(string message, Users* fromUser){
     //check to see if they are in the chatRoom
+    //TODO: check also present here
     bool found = false;
     for (Users* user : users){
         if (user->getName() == fromUser->getName()){
@@ -45,8 +47,11 @@ void CtrlCat::saveMessage(string message, Users* fromUser){
         return;
     }
     // If they are, we save the message
-    string fullMessage = fromUser->getName() + ": " + message;
-    chatHistory.push_back(fullMessage);
+    ChatMessage messagePack = ChatMessage();
+    messagePack.message = message;
+    messagePack.sender = fromUser;
+    messagePack.timestamp = time(NULL);
+    chatHistory.push_back(messagePack);
     // cout to say we saved
     cout << "Message saved to CtrlCat chat history." << endl;
 }

@@ -1,7 +1,4 @@
 #include "Dogorithm.h"
-#include <iostream>
-#include <string>
-using namespace std;
 
 Dogorithm::Dogorithm(){
     // Constructor is empty i guess
@@ -18,11 +15,14 @@ void Dogorithm::sendMessage(std::string message, Users* fromUser){
     saveMessage(message, fromUser);
 }
 void Dogorithm::saveMessage(string message, Users* fromUser){
-    string fullMessage = fromUser->getName() + ": " + message;
-    chatHistory.push_back(fullMessage);
+    ChatMessage messagePack = ChatMessage();
+    messagePack.message = message;
+    messagePack.sender = fromUser;
+    messagePack.timestamp = time(NULL);
+    chatHistory.push_back(messagePack);
     // cout to say we saved, should be removed later cuase we will be saying
     // "saved" every message
-    cout << "Message saved to Dogorithm chat history." << endl;
+    //cout << "Message saved to Dogorithm chat history." << endl;
 }
 void Dogorithm::removeUser(Users* user){
     std::vector<Users*> newList;
