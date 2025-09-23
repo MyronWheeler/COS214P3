@@ -9,12 +9,13 @@ class Users {// Should have a setMediator function?
 	// added getters and setters for name and chatRooms
 
 protected:
-	vector<ChatRoom*> chatRooms; // changed to be a vecctor
+	vector<ChatRoom*> chatRooms; // changed to be a vector
 	string name;
 	vector<Command*> commandQueue;
 
 public:
 	Users(string name);
+	~Users();
     void send(string message, ChatRoom* room);
 
     void receive(string message, Users* fromUser, ChatRoom* room);

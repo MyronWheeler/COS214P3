@@ -6,11 +6,7 @@ class SendMessageCommand : public Command {
 
 
 public:
-	SendMessageCommand(ChatRoom* room, string message, Users* fromUser) {
-		this->room = room;
-		this->message = message;
-		this->fromUser = fromUser;
-	}
+	SendMessageCommand(ChatRoom* room, string message, Users* fromUser):Command(room, message, fromUser) {}
 	void execute();
 };
 

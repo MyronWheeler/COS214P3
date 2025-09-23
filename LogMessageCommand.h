@@ -6,11 +6,7 @@ class LogMessageCommand : public Command {
 
 
 public:
-	LogMessageCommand(ChatRoom* room, string message, Users* fromUser) {
-		this->room = room;
-		this->message = message;
-		this->fromUser = fromUser;
-	}
+	LogMessageCommand(ChatRoom* room, string message, Users* fromUser):Command(room, message, fromUser) {}
 	void execute();
 };
 

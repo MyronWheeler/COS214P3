@@ -3,6 +3,7 @@
 #include "ChatRoom.h"
 #include "Users.h"
 #include <string>
+class Users;
 using namespace std;
 class Command {
 
@@ -12,6 +13,12 @@ protected:
 	Users* fromUser;
 
 public:
+	Command(ChatRoom* room, string message, Users* fromUser) {
+		this->room = room;
+		this->message = message;
+		this->fromUser = fromUser;
+	}
+	virtual ~Command();
 	virtual void execute() = 0;
 };
 

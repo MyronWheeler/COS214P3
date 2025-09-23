@@ -4,7 +4,12 @@
 using namespace std;
 
 Users::Users(string name){
+    chatRooms = vector<ChatRoom*>();
     this->name = name;
+    commandQueue = vector<Command*>();
+}
+
+Users::~Users() {
 }
 
 string Users::getName() const {
