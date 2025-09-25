@@ -5,7 +5,7 @@ Dogorithm::Dogorithm() : ChatRoom() {
 void Dogorithm::registerUser(Users* User){
     users.push_back(User);
 }
-void Dogorithm::sendMessage(std::string message, Users* fromUser){
+void Dogorithm::sendMessage(ChatMessage message, Users* fromUser){
 
     bool found = false;
     for (Users* user : users){
@@ -24,7 +24,7 @@ void Dogorithm::sendMessage(std::string message, Users* fromUser){
             user->receive(message, fromUser, this);
         }
     }
-    saveMessage(message, fromUser);
+    
 }
 void Dogorithm::saveMessage(string message, Users* fromUser){
     

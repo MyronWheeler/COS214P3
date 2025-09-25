@@ -4,7 +4,7 @@
 
 class SendMessageCommand : public Command {
 public:
-	SendMessageCommand(ChatRoom* room, string message, Users* fromUser):Command(room, message, fromUser) {}
+	SendMessageCommand(ChatRoom* room, ChatRoom::ChatMessage message, Users* fromUser):Command(room, message, fromUser) {}
 	void execute();
 };
 

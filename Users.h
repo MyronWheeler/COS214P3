@@ -16,9 +16,9 @@ protected:
 public:
 	Users(string name);
 	~Users();
-    void send(string message, ChatRoom* room);
+    void send(ChatRoom::ChatMessage message, ChatRoom* room);
 
-    void receive(string message, Users* fromUser, ChatRoom* room);
+    void receive(ChatRoom::ChatMessage message, Users* fromUser, ChatRoom* room);
 
 	void addCommand(Command* command);
 

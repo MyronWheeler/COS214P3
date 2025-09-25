@@ -7,7 +7,7 @@ class CtrlCat : public ChatRoom {
 public:
     CtrlCat();
     void registerUser(Users* User) override;
-    void sendMessage(string message, Users* fromUser) override;
+    void sendMessage(ChatMessage message, Users* fromUser) override;
     void saveMessage(string message, Users* fromUser) override;
     void removeUser(Users* user) override;
 };

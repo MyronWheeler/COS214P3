@@ -23,11 +23,11 @@ void Users::setChatRooms(ChatRoom* rooms){
     chatRooms.push_back(rooms);
 }
 
-void Users::send(string message, ChatRoom* room){
+void Users::send(ChatRoom::ChatMessage message, ChatRoom* room){
     room->sendMessage(message, this);
 }
-void Users::receive(string message, Users* fromUser, ChatRoom* room){
-    cout << "[" << room << "] " << fromUser->getName() << ": " << message << endl;
+void Users::receive(ChatRoom::ChatMessage message, Users* fromUser, ChatRoom* room){
+    cout << "[" << room << "] " << fromUser->getName() << ": " << message.message << endl;
 }
 void Users::addCommand(Command* command){
     commandQueue.push_back(command);

@@ -9,11 +9,11 @@ class Command {
 
 protected:
 	ChatRoom* room;
-	string message;
+	ChatRoom::ChatMessage message;
 	Users* fromUser;
 
 public:
-	Command(ChatRoom* room, string message, Users* fromUser) {
+	Command(ChatRoom* room, ChatRoom::ChatMessage message, Users* fromUser) {
 		this->room = room;
 		this->message = message;
 		this->fromUser = fromUser;

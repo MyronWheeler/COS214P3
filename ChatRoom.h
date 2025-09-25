@@ -17,7 +17,7 @@ class ChatRoom {
 
 		virtual void registerUser(Users* User) = 0;
 
-		virtual void sendMessage(string message, Users* fromUser) = 0;
+		virtual void sendMessage(ChatMessage message, Users* fromUser) = 0;
 
 		virtual void saveMessage(string message, Users* fromUser) = 0;
 

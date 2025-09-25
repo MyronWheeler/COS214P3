@@ -10,7 +10,7 @@ CtrlCat::CtrlCat() : ChatRoom() {
 void CtrlCat::registerUser(Users* User){
     users.push_back(User);
 }
-void CtrlCat::sendMessage(std::string message, Users* fromUser){
+void CtrlCat::sendMessage(ChatMessage message, Users* fromUser){
     //TODO: why add the check here but not in Dogorithm? I think this is unnecessary for a prac, no one is trying to hack it
     // My fault I forgot to add it in Dogorithm but I mean why not have it its not deep
     bool found = false;
