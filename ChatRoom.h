@@ -4,28 +4,32 @@
 #include <vector>
 using namespace std;
 class Users;
+class VectorCHIterator;
 class ChatRoom {
+	public:
+		struct ChatMessage {
+			long timestamp;
+			string message;
+			Users* sender;
+		};
+		ChatRoom();
+		virtual ~ChatRoom();
+
+		virtual void registerUser(Users* User) = 0;
+
+		virtual void sendMessage(string message, Users* fromUser) = 0;
+
+		virtual void saveMessage(string message, Users* fromUser) = 0;
+
+		virtual void removeUser(Users* user) = 0;
+		VectorCHIterator* createIterator() ;
 
 protected:
-	struct ChatMessage {
-		long timestamp;
-		string message;
-		Users* sender;
-	};
+	
 	vector<Users*> users;
 	vector<ChatMessage> chatHistory;
 
-public:
-	ChatRoom();
-	virtual ~ChatRoom();
 
-	virtual void registerUser(Users* User) = 0;
-
-	virtual void sendMessage(string message, Users* fromUser) = 0;
-
-	virtual void saveMessage(string message, Users* fromUser) = 0;
-
-	virtual void removeUser(Users* user) = 0;
 };
 
 #endif

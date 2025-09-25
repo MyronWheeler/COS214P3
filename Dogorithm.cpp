@@ -1,12 +1,24 @@
 #include "Dogorithm.h"
 
-Dogorithm::Dogorithm(){
-    // Constructor is empty i guess
+Dogorithm::Dogorithm() : ChatRoom() {
 }
 void Dogorithm::registerUser(Users* User){
     users.push_back(User);
 }
 void Dogorithm::sendMessage(std::string message, Users* fromUser){
+
+    bool found = false;
+    for (Users* user : users){
+        if (user->getName() == fromUser->getName()){
+            found = true;
+            break;
+        }
+    }
+    if (found == false){
+        cout << fromUser->getName() << " is not in Dogorithm chat room. Message not sent." << endl;
+        return;
+    }
+
     for (Users* user : users){
         if (user->getName() != fromUser->getName()){
             user->receive(message, fromUser, this);
@@ -15,6 +27,7 @@ void Dogorithm::sendMessage(std::string message, Users* fromUser){
     saveMessage(message, fromUser);
 }
 void Dogorithm::saveMessage(string message, Users* fromUser){
+    
     ChatMessage messagePack = ChatMessage();
     messagePack.message = message;
     messagePack.sender = fromUser;

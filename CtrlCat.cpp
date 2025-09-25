@@ -3,16 +3,16 @@
 #include <string>
 using namespace std;
 
-CtrlCat::CtrlCat(){
-    // Constructor is empty i guess
+CtrlCat::CtrlCat() : ChatRoom() {
+    //users and chatHistory are initialized in ChatRoom constructor
+    
 }
 void CtrlCat::registerUser(Users* User){
     users.push_back(User);
 }
 void CtrlCat::sendMessage(std::string message, Users* fromUser){
-    // I'm gonna add a check to see if the user is in the chat room
-    // If they arent, we dont send the message
     //TODO: why add the check here but not in Dogorithm? I think this is unnecessary for a prac, no one is trying to hack it
+    // My fault I forgot to add it in Dogorithm but I mean why not have it its not deep
     bool found = false;
     for (Users* user : users){
         if (user->getName() == fromUser->getName()){

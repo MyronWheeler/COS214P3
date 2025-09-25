@@ -1,9 +1,9 @@
 #ifndef COMMAND_H
 #define COMMAND_H
 #include "ChatRoom.h"
-#include "Users.h"
 #include <string>
 class Users;
+#include "Users.h"
 using namespace std;
 class Command {
 

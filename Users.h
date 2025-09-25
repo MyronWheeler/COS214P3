@@ -1,10 +1,10 @@
 #ifndef USERS_H
 #define USERS_H
 #include "ChatRoom.h"
-#include "Command.h"
 #include <string>
 using namespace std;
-
+class Command;
+#include "Command.h"
 class Users {// Should have a setMediator function?
 	// added getters and setters for name and chatRooms
 
