@@ -11,3 +11,22 @@ UserDecorator::~UserDecorator() {
 void UserDecorator::receive(ChatRoom::ChatMessage *message, ChatRoom *room) {
     user->receive(message, room);
 }
+
+void UserDecorator::addCommand(Command *command) {
+    user->addCommand(command);
+}
+
+void UserDecorator::executeAll() {
+    user->executeAll();
+}
+
+void UserDecorator::setChatRooms(ChatRoom *rooms) {
+    user->setChatRooms(rooms);
+}
+
+string UserDecorator::getName() const {
+    return user->getName();
+}
+
+void UserDecorator::send(string message, ChatRoom *room) {
+}

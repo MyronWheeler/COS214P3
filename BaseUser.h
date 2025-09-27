@@ -15,7 +15,6 @@ public:
     void executeAll();
     void setChatRooms(ChatRoom* rooms);
     string getName() const;
-    virtual void send(string message, ChatRoom* room);
 
     virtual void receive(ChatRoom::ChatMessage* message, ChatRoom* room);
 };

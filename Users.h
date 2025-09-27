@@ -11,8 +11,13 @@ class Users {// Should have a setMediator function?
 public:
 	Users();
 	virtual ~Users();
-    virtual void receive(ChatRoom::ChatMessage* message, ChatRoom* room)=0;
-	virtual string getName() const;
+	virtual void addCommand(Command* command)=0;
+
+	virtual void executeAll()=0;
+	virtual void setChatRooms(ChatRoom* rooms)=0;
+
+	virtual void receive(ChatRoom::ChatMessage* message, ChatRoom* room)=0;
+	virtual string getName()=0;
 };
 
 #endif

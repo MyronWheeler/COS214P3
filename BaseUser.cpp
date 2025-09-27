@@ -21,15 +21,6 @@ void BaseUser::addCommand(Command *command) {
     commandQueue.push_back(command);
 }
 
-void BaseUser::send(string message, ChatRoom* room){
-    /*ChatRoom::ChatMessage* msg = new ChatRoom::ChatMessage();
-    msg->message = message;
-    msg->sender = this;
-    msg->timestamp = time(NULL);
-
-    room->sendMessage(msg);*/
-    cout << "You do not have permission to send messages." << endl;
-}
 void BaseUser::receive(ChatRoom::ChatMessage* message, ChatRoom* room){
     cout << "[" << room << "] " << message->sender->getName() << ": " << message->message << endl;
 }
