@@ -2,10 +2,19 @@
 #define COS214P3_NORMALUSER_H
 #include "Users.h"
 using namespace std;
-class NormalUser: public Users {
+class BaseUser: public Users {
+protected:
+    vector<ChatRoom*> chatRooms; // changed to be a vector
+    string name;
+    vector<Command*> commandQueue;
 public:
-    NormalUser(string name): Users(name){};
+    BaseUser(string name);
+    virtual ~BaseUser();
     void addCommand(Command* command);
+
+    void executeAll();
+    void setChatRooms(ChatRoom* rooms);
+    string getName() const;
     virtual void send(string message, ChatRoom* room);
 
     virtual void receive(ChatRoom::ChatMessage* message, ChatRoom* room);
