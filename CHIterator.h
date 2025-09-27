@@ -8,7 +8,7 @@ class CHIterator {
 public:
     virtual ~CHIterator() {}
     virtual bool hasNext() = 0;
-    virtual ChatRoom::ChatMessage next() = 0;
+    virtual ChatRoom::ChatMessage* next() = 0;
     virtual void reset() = 0;
 };
 

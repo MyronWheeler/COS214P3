@@ -3,7 +3,7 @@
 
 ChatRoom::ChatRoom() {
     users = vector<Users*>();
-    chatHistory = vector<ChatMessage>();
+    chatHistory = vector<ChatMessage*>();
 }
 
 ChatRoom::~ChatRoom() {

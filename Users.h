@@ -2,6 +2,7 @@
 #define USERS_H
 #include "ChatRoom.h"
 #include <string>
+#include <iostream>
 using namespace std;
 class Command;
 #include "Command.h"
@@ -16,9 +17,9 @@ protected:
 public:
 	Users(string name);
 	~Users();
-    void send(ChatRoom::ChatMessage message, ChatRoom* room);
+    virtual void send(ChatRoom::ChatMessage* message, ChatRoom* room)=0;
 
-    void receive(ChatRoom::ChatMessage message, Users* fromUser, ChatRoom* room);
+    virtual void receive(ChatRoom::ChatMessage* message, ChatRoom* room)=0;
 
 	void addCommand(Command* command);
 

@@ -5,34 +5,29 @@ Dogorithm::Dogorithm() : ChatRoom() {
 void Dogorithm::registerUser(Users* User){
     users.push_back(User);
 }
-void Dogorithm::sendMessage(ChatMessage message, Users* fromUser){
+void Dogorithm::sendMessage(ChatMessage* message){
 
     bool found = false;
     for (Users* user : users){
-        if (user->getName() == fromUser->getName()){
+        if (user->getName() == message->sender->getName()){
             found = true;
             break;
         }
     }
     if (found == false){
-        cout << fromUser->getName() << " is not in Dogorithm chat room. Message not sent." << endl;
+        cout << message->sender->getName() << " is not in Dogorithm chat room. Message not sent." << endl;
         return;
     }
 
     for (Users* user : users){
-        if (user->getName() != fromUser->getName()){
-            user->receive(message, fromUser, this);
+        if (user->getName() != message->sender->getName()){
+            user->receive(message, this);
         }
     }
     
 }
-void Dogorithm::saveMessage(string message, Users* fromUser){
-    
-    ChatMessage messagePack = ChatMessage();
-    messagePack.message = message;
-    messagePack.sender = fromUser;
-    messagePack.timestamp = time(NULL);
-    chatHistory.push_back(messagePack);
+void Dogorithm::saveMessage(ChatMessage* message){
+    chatHistory.push_back(message);
     // cout to say we saved, should be removed later cuase we will be saying
     // "saved" every message
     //cout << "Message saved to Dogorithm chat history." << endl;

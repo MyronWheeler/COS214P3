@@ -9,8 +9,8 @@ class Dogorithm : public ChatRoom {
 public:
     Dogorithm();
     void registerUser(Users* User) override;
-    void sendMessage(ChatMessage message, Users* fromUser) override;
-    void saveMessage(string message, Users* fromUser) override;
+    void sendMessage(ChatMessage* message) override;
+    void saveMessage(ChatMessage* message) override;
     void removeUser(Users* user) override;
 };
 

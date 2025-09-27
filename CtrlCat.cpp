@@ -1,6 +1,4 @@
 #include "CtrlCat.h"
-#include <iostream>
-#include <string>
 using namespace std;
 
 CtrlCat::CtrlCat() : ChatRoom() {
@@ -10,48 +8,44 @@ CtrlCat::CtrlCat() : ChatRoom() {
 void CtrlCat::registerUser(Users* User){
     users.push_back(User);
 }
-void CtrlCat::sendMessage(ChatMessage message, Users* fromUser){
+void CtrlCat::sendMessage(ChatMessage* message){
     //TODO: why add the check here but not in Dogorithm? I think this is unnecessary for a prac, no one is trying to hack it
     // My fault I forgot to add it in Dogorithm but I mean why not have it its not deep
     bool found = false;
     for (Users* user : users){
-        if (user->getName() == fromUser->getName()){
+        if (user->getName() == message->sender->getName()){
             found = true;
             break;
         }
     }
     if (found == false){
-        cout << fromUser->getName() << " is not in CtrlCat chat room. Message not sent." << endl;
+        cout << message->sender->getName() << " is not in CtrlCat chat room. Message not sent." << endl;
         return;
     }
     // If they are, we send the message
     for (Users* user : users){
-        if (user->getName() != fromUser->getName()){
-            user->receive(message, fromUser, this);
+        if (user->getName() != message->sender->getName()){
+            user->receive(message, this);
         }
     }
     // saveMessage(message, fromUser);
 }
-void CtrlCat::saveMessage(string message, Users* fromUser){
+void CtrlCat::saveMessage(ChatMessage* message){
     //check to see if they are in the chatRoom
     //TODO: check also present here
     bool found = false;
     for (Users* user : users){
-        if (user->getName() == fromUser->getName()){
+        if (user->getName() == message->sender->getName()){
             found = true;
             break;
         }
     }
     if (found == false){
-        cout << fromUser->getName() << " is not in CtrlCat chat room. Message not saved." << endl;
+        cout << message->sender->getName() << " is not in CtrlCat chat room. Message not saved." << endl;
         return;
     }
     // If they are, we save the message
-    ChatMessage messagePack = ChatMessage();
-    messagePack.message = message;
-    messagePack.sender = fromUser;
-    messagePack.timestamp = time(NULL);
-    chatHistory.push_back(messagePack);
+    chatHistory.push_back(message);
     // cout to say we saved
     cout << "Message saved to CtrlCat chat history." << endl;
 }

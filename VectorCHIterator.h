@@ -7,12 +7,12 @@
 
 class VectorCHIterator : public CHIterator {
 private:
-    const std::vector<ChatRoom::ChatMessage>& history;
+    const std::vector<ChatRoom::ChatMessage*>& history;
     size_t index;
 public:
-    VectorCHIterator(const std::vector<ChatRoom::ChatMessage>& history);
+    VectorCHIterator(const std::vector<ChatRoom::ChatMessage*>& history);
     bool hasNext() override;
-    ChatRoom::ChatMessage next() override;
+    ChatRoom::ChatMessage* next() override;
     void reset() override;
 };
 
