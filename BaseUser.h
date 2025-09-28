@@ -11,15 +11,15 @@ protected:
     int id;
 public:
     BaseUser(string name, int id);
-    virtual ~BaseUser();
-    void addCommand(Command* command);
-    int getId();
+    virtual ~BaseUser() override;
+    virtual void addCommand(Command* command) override;
+    virtual int getId() override;
 
-    void executeAll();
-    void setChatRooms(ChatRoom* rooms);
-    string getName() const;
+    virtual void executeAll() override;
+    virtual void setChatRooms(ChatRoom* rooms) override;
+    virtual string getName() override;
 
-    virtual void receive(ChatRoom::ChatMessage* message, ChatRoom* room);
+    virtual void receive(ChatRoom::ChatMessage* message, ChatRoom* room) override;
 protected:
     virtual vector<ChatRoom*> getChatRooms();
 };

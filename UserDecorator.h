@@ -7,15 +7,16 @@ protected:
     Users* user;
 public:
     UserDecorator(Users* user);
-    virtual ~UserDecorator();
-    virtual void receive(ChatRoom::ChatMessage* message, ChatRoom* room);
-    void addCommand(Command* command);
+    virtual ~UserDecorator() override;
+    virtual void receive(ChatRoom::ChatMessage* message, ChatRoom* room)override;
+    virtual void addCommand(Command* command) override;
 
-    void executeAll();
-    void setChatRooms(ChatRoom* rooms);
-    virtual string getName();
+    virtual void executeAll() override;
+    virtual void setChatRooms(ChatRoom* rooms) override;
+    virtual string getName() override;
     virtual void send(string message, ChatRoom* room)=0;
-    virtual int getId();
+    virtual int getId()override;
+
     virtual vector<ChatRoom*> getChatRooms();
 friend class Administrator;//to access the getChatRooms securely
 };

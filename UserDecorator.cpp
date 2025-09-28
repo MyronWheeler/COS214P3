@@ -33,7 +33,7 @@ void UserDecorator::send(string message, ChatRoom *room) {
 }
 
 int UserDecorator::getId() {
-    user->getId();
+    return user->getId();
 }
 
 vector<ChatRoom *> UserDecorator::getChatRooms() {
