@@ -13,7 +13,7 @@ BaseUser::~BaseUser() {
     commandQueue.clear(); // Clear the vector
 }
 
-string BaseUser::getName() const {
+string BaseUser::getName() {
     return name;
 }
 

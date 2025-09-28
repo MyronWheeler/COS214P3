@@ -7,7 +7,7 @@ class Sender: public UserDecorator {
     public:
     Sender(Users* user): UserDecorator(user){};
     virtual ~Sender(){};
-    virtual void send(string message, ChatRoom* room);
+    virtual void send(string message, ChatRoom* room) override;
 };
 
 

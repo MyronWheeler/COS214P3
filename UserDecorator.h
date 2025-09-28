@@ -7,15 +7,15 @@ protected:
     Users* user;
 public:
     UserDecorator(Users* user);
-    virtual ~UserDecorator();
-    virtual void receive(ChatRoom::ChatMessage* message, ChatRoom* room);
+    virtual ~UserDecorator() override;
+    virtual void receive(ChatRoom::ChatMessage* message, ChatRoom* room)override;
     void addCommand(Command* command);
 
     void executeAll();
     void setChatRooms(ChatRoom* rooms);
     string getName() const;
     virtual void send(string message, ChatRoom* room)=0;
-    virtual int getId();
+    virtual int getId()override;
 
 };
 
