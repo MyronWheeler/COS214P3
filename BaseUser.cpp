@@ -1,11 +1,10 @@
 #include "BaseUser.h"
 
-BaseUser::BaseUser(string name) {
+BaseUser::BaseUser(string name, int id) {
     chatRooms = vector<ChatRoom*>();
     this->name = name;
     commandQueue = vector<Command*>();
-    // I dont know how you assign user IDs
-    this->id = 0;//just for testing
+    this->id = id;
 }
 
 BaseUser::~BaseUser() {

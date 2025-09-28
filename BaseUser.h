@@ -9,7 +9,7 @@ protected:
     vector<Command*> commandQueue;
     int id;
 public:
-    BaseUser(string name);
+    BaseUser(string name, int id);
     virtual ~BaseUser() override;
     virtual void addCommand(Command* command) override;
     virtual int getId() override;
