@@ -9,7 +9,7 @@ public:
     ~Administrator();
     void banUserAccount(Users* user, string reason);
     void removeUserFromChatRoom(Users* user, ChatRoom* cRoom);
-    Users* elevateUserPrivileges(Users* user);
+    Users* elevateUserPrivileges(Users* user, int type);
 
 };
 

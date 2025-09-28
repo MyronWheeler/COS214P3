@@ -13,10 +13,11 @@ public:
 
     void executeAll();
     void setChatRooms(ChatRoom* rooms);
-    string getName() const;
+    virtual string getName();
     virtual void send(string message, ChatRoom* room)=0;
     virtual int getId();
-
+    virtual vector<ChatRoom*> getChatRooms();
+friend class Administrator;//to access the getChatRooms securely
 };
 
 #endif //COS214P3_USERDECORATOR_H

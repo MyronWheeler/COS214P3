@@ -1,9 +1,10 @@
 #include "BaseUser.h"
 
-BaseUser::BaseUser(string name) {
+BaseUser::BaseUser(string name, int id) {
     chatRooms = vector<ChatRoom*>();
     this->name = name;
     commandQueue = vector<Command*>();
+    this->id = id;
 }
 
 BaseUser::~BaseUser() {
@@ -35,4 +36,12 @@ void BaseUser::executeAll() {
 
 void BaseUser::setChatRooms(ChatRoom *rooms) {
     chatRooms.push_back(rooms);
+}
+
+int BaseUser::getId() {
+    return id;
+}
+
+vector<ChatRoom *> BaseUser::getChatRooms() {
+    return chatRooms;
 }

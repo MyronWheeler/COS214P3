@@ -19,6 +19,8 @@ public:
 
 	virtual void receive(ChatRoom::ChatMessage* message, ChatRoom* room)=0;
 	virtual string getName()=0;
+
+	virtual vector<ChatRoom *> getChatRooms()=0;
 };
 
 #endif
