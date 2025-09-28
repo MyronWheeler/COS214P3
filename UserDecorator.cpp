@@ -29,7 +29,7 @@ string UserDecorator::getName() {
 }
 
 void UserDecorator::send(string message, ChatRoom *room) {
-    //TODO: implement sending
+    cout << "You do not have permission to send a message" << endl;
 }
 
 int UserDecorator::getId() {

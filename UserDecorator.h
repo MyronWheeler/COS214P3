@@ -14,7 +14,7 @@ public:
     virtual void executeAll() override;
     virtual void setChatRooms(ChatRoom* rooms) override;
     virtual string getName() override;
-    virtual void send(string message, ChatRoom* room)=0;
+    virtual void send(string message, ChatRoom* room);
     virtual int getId()override;
 
     virtual vector<ChatRoom*> getChatRooms();
