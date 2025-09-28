@@ -5,7 +5,7 @@
 
 class Administrator: public UserDecorator {
 public:
-    Administrator();
+    Administrator(Users* user);
     ~Administrator();
     void banUserAccount(Users* user, string reason);
     void removeUserFromChatRoom(Users* user, ChatRoom* cRoom);

@@ -13,6 +13,7 @@ protected:
 
 public:
 	Command(ChatRoom* room, ChatRoom::ChatMessage* message) {
+		this->room = room;
 		this->message = message;
 	}
 	virtual ~Command();

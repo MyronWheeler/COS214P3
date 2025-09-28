@@ -9,7 +9,7 @@ void Dogorithm::sendMessage(ChatMessage* message){
 
     bool found = false;
     for (Users* user : users){
-        if (user->getName() == message->sender->getName()){
+        if (user->getId() == message->sender->getId()){
             found = true;
             break;
         }
@@ -20,7 +20,7 @@ void Dogorithm::sendMessage(ChatMessage* message){
     }
 
     for (Users* user : users){
-        if (user->getName() != message->sender->getName()){
+        if (user->getId() != message->sender->getId()){
             user->receive(message, this);
         }
     }
@@ -35,7 +35,7 @@ void Dogorithm::saveMessage(ChatMessage* message){
 void Dogorithm::removeUser(Users* user){
     std::vector<Users*> newList;
     for (Users* u : users) {
-        if (u != user) newList.push_back(u);
+        if (u->getId() != user->getId()) newList.push_back(u);
     }
     users = std::move(newList);
     std::cout << user->getName() << " left Dogorithm" << std::endl;

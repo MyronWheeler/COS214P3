@@ -13,7 +13,7 @@ void CtrlCat::sendMessage(ChatMessage* message){
     // My fault I forgot to add it in Dogorithm but I mean why not have it its not deep
     bool found = false;
     for (Users* user : users){
-        if (user->getName() == message->sender->getName()){
+        if (user->getId() == message->sender->getId()){
             found = true;
             break;
         }
@@ -24,7 +24,7 @@ void CtrlCat::sendMessage(ChatMessage* message){
     }
     // If they are, we send the message
     for (Users* user : users){
-        if (user->getName() != message->sender->getName()){
+        if (user->getId() != message->sender->getId()){
             user->receive(message, this);
         }
     }
@@ -35,7 +35,7 @@ void CtrlCat::saveMessage(ChatMessage* message){
     //TODO: check also present here
     bool found = false;
     for (Users* user : users){
-        if (user->getName() == message->sender->getName()){
+        if (user->getId() == message->sender->getId()){
             found = true;
             break;
         }
@@ -52,7 +52,7 @@ void CtrlCat::saveMessage(ChatMessage* message){
 void CtrlCat::removeUser(Users* user){
     std::vector<Users*> newList;
     for (Users* u : users) {
-        if (u != user) newList.push_back(u);
+        if (u->getId() != user->getId()) newList.push_back(u);
     }
     users = std::move(newList);
     std::cout << user->getName() << " left CtrlCat" << std::endl;
