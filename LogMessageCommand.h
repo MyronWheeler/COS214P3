@@ -4,7 +4,7 @@
 
 class LogMessageCommand : public Command {
 public:
-	LogMessageCommand(ChatRoom* room, ChatRoom::ChatMessage message, Users* fromUser):Command(room, message, fromUser) {}
+	LogMessageCommand(ChatRoom* room, ChatRoom::ChatMessage* message):Command(room, message) {}
 	void execute();
 };
 

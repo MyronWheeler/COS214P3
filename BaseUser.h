@@ -7,10 +7,12 @@ protected:
     vector<ChatRoom*> chatRooms; // changed to be a vector
     string name;
     vector<Command*> commandQueue;
+    int id;
 public:
     BaseUser(string name);
     virtual ~BaseUser();
     void addCommand(Command* command);
+    int getId();
 
     void executeAll();
     void setChatRooms(ChatRoom* rooms);

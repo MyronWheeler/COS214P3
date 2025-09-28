@@ -15,6 +15,7 @@ public:
     void setChatRooms(ChatRoom* rooms);
     string getName() const;
     virtual void send(string message, ChatRoom* room)=0;
+    virtual int getId();
 
 };
 

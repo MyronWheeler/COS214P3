@@ -8,15 +8,12 @@ using namespace std;
 class Command {
 
 protected:
+	ChatRoom::ChatMessage* message;
 	ChatRoom* room;
-	ChatRoom::ChatMessage message;
-	Users* fromUser;
 
 public:
-	Command(ChatRoom* room, ChatRoom::ChatMessage message, Users* fromUser) {
-		this->room = room;
+	Command(ChatRoom* room, ChatRoom::ChatMessage* message) {
 		this->message = message;
-		this->fromUser = fromUser;
 	}
 	virtual ~Command();
 	virtual void execute() = 0;

@@ -29,4 +29,9 @@ string UserDecorator::getName() const {
 }
 
 void UserDecorator::send(string message, ChatRoom *room) {
+    //TODO: implement sending
+}
+
+int UserDecorator::getId() {
+    user->getId();
 }

@@ -15,6 +15,7 @@ public:
 
 	virtual void executeAll()=0;
 	virtual void setChatRooms(ChatRoom* rooms)=0;
+	virtual int getId()=0;
 
 	virtual void receive(ChatRoom::ChatMessage* message, ChatRoom* room)=0;
 	virtual string getName()=0;
