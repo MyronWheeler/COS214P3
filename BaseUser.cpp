@@ -4,6 +4,8 @@ BaseUser::BaseUser(string name) {
     chatRooms = vector<ChatRoom*>();
     this->name = name;
     commandQueue = vector<Command*>();
+    // I dont know how you assign user IDs
+    this->id = 0;//just for testing
 }
 
 BaseUser::~BaseUser() {
@@ -35,4 +37,8 @@ void BaseUser::executeAll() {
 
 void BaseUser::setChatRooms(ChatRoom *rooms) {
     chatRooms.push_back(rooms);
+}
+
+int BaseUser::getId(){
+    return id;
 }

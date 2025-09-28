@@ -9,11 +9,11 @@ public:
     UserDecorator(Users* user);
     virtual ~UserDecorator() override;
     virtual void receive(ChatRoom::ChatMessage* message, ChatRoom* room)override;
-    void addCommand(Command* command);
+    virtual void addCommand(Command* command) override;
 
-    void executeAll();
-    void setChatRooms(ChatRoom* rooms);
-    string getName() const;
+    virtual void executeAll() override;
+    virtual void setChatRooms(ChatRoom* rooms) override;
+    virtual string getName() override;
     virtual void send(string message, ChatRoom* room)=0;
     virtual int getId()override;
 

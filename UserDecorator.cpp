@@ -24,7 +24,7 @@ void UserDecorator::setChatRooms(ChatRoom *rooms) {
     user->setChatRooms(rooms);
 }
 
-string UserDecorator::getName() const {
+string UserDecorator::getName() {
     return user->getName();
 }
 
@@ -33,5 +33,5 @@ void UserDecorator::send(string message, ChatRoom *room) {
 }
 
 int UserDecorator::getId() {
-    user->getId();
+    return user->getId();
 }
