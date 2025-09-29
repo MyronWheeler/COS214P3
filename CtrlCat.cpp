@@ -7,7 +7,17 @@ CtrlCat::CtrlCat() : ChatRoom() {
     
 }
 void CtrlCat::registerUser(Users* User){
+    // Check to see if they are already registered
+    for (Users* u : users) {
+        if (u->getId() == User->getId()) {
+            cout << User->getName() << " is already registered in CtrlCat." << endl;
+            return;
+        }
+    }
+    // If not, we add them
     users.push_back(User);
+    // added functionality to also add chatroom to users list
+    User->setChatRooms(this);
 }
 void CtrlCat::sendMessage(ChatMessage* message){
     //TODO: why add the check here but not in Dogorithm? I think this is unnecessary for a prac, no one is trying to hack it

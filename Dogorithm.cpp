@@ -4,7 +4,16 @@
 Dogorithm::Dogorithm() : ChatRoom() {
 }
 void Dogorithm::registerUser(Users* User){
+    // Check to see if they are already registered
+    for (Users* u : users) {
+        if (u->getId() == User->getId()) {
+            cout << User->getName() << " is already registered in Dogorithm." << endl;
+            return;
+        }
+    }
     users.push_back(User);
+    // added functionality to also add chatroom to users list
+    User->setChatRooms(this);
 }
 void Dogorithm::sendMessage(ChatMessage* message){
 
