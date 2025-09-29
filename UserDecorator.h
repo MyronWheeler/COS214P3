@@ -76,6 +76,10 @@ public:
      * @return Vector of chat room pointers.
      */
     virtual vector<ChatRoom*> getChatRooms();
+    /**
+     * @brief Remove a chat room from the user's list.
+     * @param room Pointer to the chat room to remove.
+     */
     virtual void removeChatRoom(ChatRoom* room) override;
 
     friend class Administrator; ///< Allows Administrator to access getChatRooms securely.

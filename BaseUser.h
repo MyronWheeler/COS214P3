@@ -71,13 +71,18 @@ public:
      * @param room Pointer to the chat room.
      */
     virtual void receive(ChatRoom::ChatMessage* message, ChatRoom* room) override;
+    /**
+     * @brief Get the list of chat rooms.
+     * @return Vector of chat room pointers.
+     */
+    virtual void removeChatRoom(ChatRoom* room) override;
 protected:
     /**
      * @brief Get the list of chat rooms.
      * @return Vector of chat room pointers.
      */
     virtual vector<ChatRoom*> getChatRooms();
-    virtual void removeChatRoom(ChatRoom* room) override;
+
 };
 
 #endif //COS214P3_NORMALUSER_H
