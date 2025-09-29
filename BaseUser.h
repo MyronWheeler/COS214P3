@@ -77,6 +77,7 @@ protected:
      * @return Vector of chat room pointers.
      */
     virtual vector<ChatRoom*> getChatRooms();
+    virtual void removeChatRoom(ChatRoom* room) override;
 };
 
 #endif //COS214P3_NORMALUSER_H

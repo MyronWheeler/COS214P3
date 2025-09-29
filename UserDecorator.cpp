@@ -39,3 +39,6 @@ int UserDecorator::getId() {
 vector<ChatRoom *> UserDecorator::getChatRooms() {
     return user->getChatRooms();
 }
+void UserDecorator::removeChatRoom(ChatRoom* room) {
+    user->removeChatRoom(room);
+}

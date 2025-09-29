@@ -71,6 +71,8 @@ public:
      * @return Vector of chat room pointers.
      */
     virtual vector<ChatRoom *> getChatRooms()=0;
+	//adding functionality to remove the user from the chat room
+	virtual void removeChatRoom(ChatRoom* room)=0;
 };
 
 #endif

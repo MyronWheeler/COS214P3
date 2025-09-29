@@ -45,3 +45,10 @@ int BaseUser::getId() {
 vector<ChatRoom *> BaseUser::getChatRooms() {
     return chatRooms;
 }
+void BaseUser::removeChatRoom(ChatRoom* room) {
+    vector<ChatRoom*> newList;
+    for (ChatRoom* r : chatRooms) {
+        if (r != room) newList.push_back(r);
+    }
+    chatRooms = std::move(newList);
+}
