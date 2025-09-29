@@ -22,7 +22,7 @@ class ChatRoom {
 		virtual void saveMessage(ChatMessage*) = 0;
 
 		virtual void removeUser(Users* user) = 0;
-		VectorCHIterator* createIterator() ;
+		virtual CHIterator* createIterator() = 0;
 
 protected:
 	

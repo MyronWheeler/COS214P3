@@ -1,4 +1,5 @@
 #include "Dogorithm.h"
+#include "VectorCHIterator.h"
 
 Dogorithm::Dogorithm() : ChatRoom() {
 }
@@ -39,6 +40,9 @@ void Dogorithm::removeUser(Users* user){
     }
     users = std::move(newList);
     std::cout << user->getName() << " left Dogorithm" << std::endl;
+}
+CHIterator* Dogorithm::createIterator() {
+    return new VectorCHIterator(chatHistory);
 }
 
 

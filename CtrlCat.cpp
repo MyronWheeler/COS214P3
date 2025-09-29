@@ -1,4 +1,5 @@
 #include "CtrlCat.h"
+#include "VectorCHIterator.h"
 using namespace std;
 
 CtrlCat::CtrlCat() : ChatRoom() {
@@ -56,6 +57,9 @@ void CtrlCat::removeUser(Users* user){
     }
     users = std::move(newList);
     std::cout << user->getName() << " left CtrlCat" << std::endl;
+}
+CHIterator* CtrlCat::createIterator() {
+    return new VectorCHIterator(chatHistory);
 }
 
 

@@ -12,6 +12,7 @@ public:
     void sendMessage(ChatMessage* message) override;
     void saveMessage(ChatMessage* message) override;
     void removeUser(Users* user) override;
+    CHIterator* createIterator() override;
 };
 
 #endif

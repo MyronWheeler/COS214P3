@@ -9,6 +9,3 @@ ChatRoom::ChatRoom() {
 ChatRoom::~ChatRoom() {
     //Users exist after a chatroom is destroyed.
 }
-VectorCHIterator* ChatRoom::createIterator() {
-    return new VectorCHIterator(chatHistory);
-}
