@@ -12,6 +12,7 @@
 using namespace std;
 class Users;
 class VectorCHIterator;
+class CHIterator;
 
 /**
  * @class ChatRoom

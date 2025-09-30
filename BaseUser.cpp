@@ -30,8 +30,11 @@ void BaseUser::executeAll() {
     for(Command* command : commandQueue){
         command->execute();
         delete command; //free the memory
+        // cout << "HERE" << endl;
+        
     }
     commandQueue.clear(); // Clear the vector
+    
 }
 
 void BaseUser::setChatRooms(ChatRoom *rooms) {
