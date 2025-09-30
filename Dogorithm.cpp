@@ -59,6 +59,7 @@ void Dogorithm::saveMessage(ChatMessage* message){
     // Make the chatroom own its own copy (deep copy)
     ChatMessage* copy = new ChatMessage(*message);
     chatHistory.push_back(copy);
+    cout << "Message saved to Dogorithm chat history." << endl;
 }
 void Dogorithm::removeUser(Users* user){
     std::vector<Users*> newList;

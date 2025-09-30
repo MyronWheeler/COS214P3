@@ -44,78 +44,74 @@ void testUserAndRoom() {
 }
 
 // Test sending and receiving messages
-void testSendReceive() {
+void testSendReceive(ChatRoom* room) {
     cout << " testSendReceive " << endl;
     UserDecorator* alice = new Sender(new BaseUser("Alice",0));
     UserDecorator* bob = new Sender(new BaseUser("Bob",1));
-    Dogorithm* dogRoom = new Dogorithm();
 
-    dogRoom->registerUser(alice);
-    dogRoom->registerUser(bob);
+    room->registerUser(alice);
+    room->registerUser(bob);
     cout << "Users registered to Dogorithm." << endl;
 
-    alice->send("Hello Bob!", dogRoom);
-    bob->send("Hi Alice!", dogRoom);
+    alice->send("Hello Bob!", room);
+    bob->send("Hi Alice!", room);
     alice->executeAll();
     bob->executeAll();
 
     delete alice;
     delete bob;
-    delete dogRoom;
+    delete room;
 }
 
 // Test if user is not in room and tries to send
-void testInvalidSend() {
+void testInvalidSend(ChatRoom* room) {
     cout << " testInvalidSend " << endl;
     UserDecorator* alice = new Sender(new BaseUser("Alice",0));
     UserDecorator* bob = new Sender(new BaseUser("Bob",1));
-    Dogorithm* dogRoom = new Dogorithm();   
-    dogRoom->registerUser(alice);
+    room->registerUser(alice);
     cout << "Alice registered to Dogorithm." << endl;
-    bob->send("Hi Alice!", dogRoom);
+    bob->send("Hi Alice!", room);
     bob->executeAll();
     delete alice;
     delete bob;
-    delete dogRoom;
+    delete room;
 }
 
 // Test command queue and execution
-void testCommandQueue() {
+void testCommandQueue(ChatRoom* room) {
     cout << " testCommandQueue " << endl;
     UserDecorator* alice = new Sender(new BaseUser("Alice",0));
     UserDecorator* bob = new Sender(new BaseUser("Bob",1));
-    Dogorithm* dogRoom = new Dogorithm();
 
-    dogRoom->registerUser(alice);
-    dogRoom->registerUser(bob);
+    room->registerUser(alice);
+    room->registerUser(bob);
 
-    alice->send("Hello Bob!", dogRoom);
-    bob->send("Hi Alice!", dogRoom);
+    alice->send("Hello Bob!", room);
+    bob->send("Hi Alice!", room);
     // alice->addCommand(new SendMessageCommand(dogRoom, new ChatRoom::ChatMessage(makeMessage("How are you?", alice))));
     alice->executeAll();
     delete alice;
     delete bob;
-    delete dogRoom;
+    delete room;
 }
 
 // Test chat history iterator
-void testIterator() {
+void testIterator(ChatRoom* room) {
     cout << " testIterator " << endl;
     UserDecorator* alice = new Sender(new BaseUser("Alice",0));
     UserDecorator* bob = new Sender(new BaseUser("Bob",1));
-    Dogorithm* dogRoom = new Dogorithm();
 
-    dogRoom->registerUser(alice);
-    dogRoom->registerUser(bob);
+    room->registerUser(alice);
+    room->registerUser(bob);
 
-    alice->send("Hello Bob!", dogRoom);
-    bob->send("Hi Alice!", dogRoom);
-    alice->send("How are you?", dogRoom);
-    bob->send("Doing well, thanks!", dogRoom);
+    alice->send("Hello Bob!", room);
+    bob->send("Hi Alice!", room);
+    alice->send("How are you?", room);
+    bob->send("Doing well, thanks!", room);
     alice->executeAll();
     bob->executeAll();
 
-    CHIterator* it = dogRoom->createIterator();// Should return a VectorCHIterator
+    CHIterator* it = room->createIterator();// Should return a VectorCHIterator
     int i = 1;
     while (it->hasNext()) {
         ChatRoom::ChatMessage* msg = it->next();
@@ -126,41 +122,46 @@ void testIterator() {
     delete it;
     delete alice;
     delete bob;
-    delete dogRoom;
-    
+    delete room;
+
 }
 
 // Test removing users
-void testSelfRemoveUser() {
+void testSelfRemoveUser(ChatRoom* room) {
     cout << " testRemoveUser " << endl;
     UserDecorator* alice = new Sender(new BaseUser("Alice",0));
     UserDecorator* bob = new Sender(new BaseUser("Bob",1));
-    Dogorithm* dogRoom = new Dogorithm();
 
-    dogRoom->registerUser(alice);
-    dogRoom->registerUser(bob);
+    room->registerUser(alice);
+    room->registerUser(bob);
 
-    bob->removeChatRoom(dogRoom);
-    alice->send("Are you still there, Bob?", dogRoom);
+    bob->removeChatRoom(room);
+    alice->send("Are you still there, Bob?", room);
 
     delete alice;
     delete bob;
-    delete dogRoom;
+    delete room;
 }
 //testing administrator functions
 void testAdminFunctions() {
     cout << " testAdminFunctions " << endl;
     Users* charlie = new BaseUser("Charlie",2);
-    UserDecorator* admin = new Administrator(new BaseUser("Admin",99));
+    UserDecorator* admin = new Administrator(new Sender(new BaseUser("Admin",99)));
     Dogorithm* dogRoom = new Dogorithm();
 
     dogRoom->registerUser(admin);
     dogRoom->registerUser(charlie);
 
     admin->send("Welcome Charlie!", dogRoom);
+    dynamic_cast<Administrator*>(admin)->removeUserFromChatRoom(charlie, dogRoom);
     dynamic_cast<Administrator*>(admin)->banUserAccount(charlie, "Violation of rules"); // This is giving issues
     admin->send("Charlie has been banned.", dogRoom);
 
+    Users* dominic = new BaseUser("Dominic",3);
+    dominic = dynamic_cast<Administrator*>(admin)->elevateUserPrivileges(dominic,1);
+    dogRoom->registerUser(dominic);
+
+    delete dominic;
     delete admin;
     delete charlie;
     delete dogRoom;
@@ -168,11 +169,16 @@ void testAdminFunctions() {
 
 int main() {
     testUserAndRoom();
-    testSendReceive();
-    testInvalidSend();
-    testCommandQueue();
-    testIterator();
-    testSelfRemoveUser();
+    testSendReceive(new Dogorithm());
+    testSendReceive(new CtrlCat());
+    testInvalidSend(new Dogorithm());
+    testInvalidSend(new CtrlCat());
+    testCommandQueue(new Dogorithm());
+    testCommandQueue(new CtrlCat());
+    testIterator(new Dogorithm());
+    testIterator(new CtrlCat());
+    testSelfRemoveUser(new Dogorithm());
+    testSelfRemoveUser(new CtrlCat());
     testAdminFunctions();
     cout << " All tests complete " << endl;
     return 0;

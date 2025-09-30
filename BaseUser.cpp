@@ -23,7 +23,7 @@ void BaseUser::addCommand(Command *command) {
 }
 
 void BaseUser::receive(ChatRoom::ChatMessage* message, ChatRoom* room){
-    cout << "[" << room->getRoomName() << "] " << message->sender->getName() << ": " << message->message << endl;
+    cout << "[" << room->getRoomName() << "@" << message->timestamp << "] " << message->sender->getName() << ": " << message->message << endl;
 }
 
 void BaseUser::executeAll() {
@@ -54,4 +54,8 @@ void BaseUser::removeChatRoom(ChatRoom* room) {
         if (r != room) newList.push_back(r);
     }
     chatRooms = std::move(newList);
+}
+
+void BaseUser::send(string message, ChatRoom *room) {
+    cout << "You do not have permission to send a message" << endl;
 }

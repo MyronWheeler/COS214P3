@@ -72,6 +72,18 @@ public:
      */
     virtual vector<ChatRoom *> getChatRooms()=0;
 	//adding functionality to remove the user from the chat room
+
+	/**
+	 * @brief Send a message to a chat room.
+	 * @param message The message content.
+	 * @param room Pointer to the chat room.
+	 */
+	virtual void send(string message, ChatRoom *room)=0;
+
+	/**
+	 * @brief Leave a chat room.
+	 * @param room Pointer to the chat room.
+	 */
 	virtual void removeChatRoom(ChatRoom* room)=0;
 };
 

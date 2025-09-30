@@ -76,6 +76,14 @@ public:
      * @return Vector of chat room pointers.
      */
     virtual void removeChatRoom(ChatRoom* room) override;
+
+    /**
+     * @brief Send a message to a chat room.
+     * @param message The message content.
+     * @param room Pointer to the chat room.
+     */
+    virtual void send(string message, ChatRoom *room) override;
+
 protected:
     /**
      * @brief Get the list of chat rooms.
