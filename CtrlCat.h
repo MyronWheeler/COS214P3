@@ -22,6 +22,10 @@ public:
      * @brief Constructor.
      */
     CtrlCat();
+    /**
+     * @brief Destructor.
+     */
+    virtual ~CtrlCat() override;
 
     /**
      * @brief Register a user to the chat room.

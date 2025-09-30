@@ -23,6 +23,10 @@ public:
      * @brief Constructor.
      */
     Dogorithm();
+    /**
+     * @brief Destructor.
+     */
+    virtual ~Dogorithm() override;
 
     /**
      * @brief Register a user to the chat room.

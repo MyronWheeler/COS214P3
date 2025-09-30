@@ -6,6 +6,12 @@ CtrlCat::CtrlCat() : ChatRoom() {
     //users and chatHistory are initialized in ChatRoom constructor
     
 }
+CtrlCat::~CtrlCat() {
+    for (ChatMessage* msg : chatHistory) {
+        delete msg; // Free each ChatMessage
+    }
+    chatHistory.clear(); // Clear the vector
+}
 void CtrlCat::registerUser(Users* User){
     // Check to see if they are already registered
     for (Users* u : users) {
@@ -56,7 +62,10 @@ void CtrlCat::saveMessage(ChatMessage* message){
         return;
     }
     // If they are, we save the message
-    chatHistory.push_back(message);
+    if (!message) return;
+    // Make the chatroom own its own copy (deep copy)
+    ChatMessage* copy = new ChatMessage(*message);
+    chatHistory.push_back(copy);
     // cout to say we saved
     cout << "Message saved to CtrlCat chat history." << endl;
 }
