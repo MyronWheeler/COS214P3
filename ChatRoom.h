@@ -71,10 +71,13 @@ class ChatRoom {
          * @return Pointer to a CHIterator.
          */
         virtual CHIterator* createIterator() = 0;
+        virtual string getRoomName() =0;
 
 protected:
     vector<Users*> users; ///< List of users in the chat room.
     vector<ChatMessage*> chatHistory; ///< Chat history.
+    public: 
+    const string roomName;
 };
 
 #endif

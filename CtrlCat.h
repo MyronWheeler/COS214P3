@@ -18,6 +18,7 @@
  */
 class CtrlCat : public ChatRoom {
 public:
+const string roomName = "CtrlCat";
     /**
      * @brief Constructor.
      */
@@ -56,6 +57,11 @@ public:
      * @return Pointer to a CHIterator.
      */
     CHIterator* createIterator() override;
+    /**
+     * @brief Get the room name.
+     * @return The name of the chat room.
+     */
+    string getRoomName() override { return roomName; }
 };
 
 #endif

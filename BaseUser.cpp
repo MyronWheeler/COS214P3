@@ -23,7 +23,7 @@ void BaseUser::addCommand(Command *command) {
 }
 
 void BaseUser::receive(ChatRoom::ChatMessage* message, ChatRoom* room){
-    cout << "[" << room << "] " << message->sender->getName() << ": " << message->message << endl;
+    cout << "[" << room->getRoomName() << "] " << message->sender->getName() << ": " << message->message << endl;
 }
 
 void BaseUser::executeAll() {

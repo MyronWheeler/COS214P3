@@ -158,7 +158,7 @@ void testAdminFunctions() {
     dogRoom->registerUser(charlie);
 
     admin->send("Welcome Charlie!", dogRoom);
-    // admin->banUserAccount(charlie, "Violation of rules"); // This is giving issues
+    dynamic_cast<Administrator*>(admin)->banUserAccount(charlie, "Violation of rules"); // This is giving issues
     admin->send("Charlie has been banned.", dogRoom);
 
     delete admin;
@@ -167,13 +167,13 @@ void testAdminFunctions() {
 }
 
 int main() {
-    // testUserAndRoom();
-    // testSendReceive();
-    // testInvalidSend();
-    // testCommandQueue();
-    // testIterator();
+    testUserAndRoom();
+    testSendReceive();
+    testInvalidSend();
+    testCommandQueue();
+    testIterator();
     testSelfRemoveUser();
-    // testAdminFunctions();
+    testAdminFunctions();
     cout << " All tests complete " << endl;
     return 0;
 }
